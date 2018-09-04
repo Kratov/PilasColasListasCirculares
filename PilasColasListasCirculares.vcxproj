@@ -116,7 +116,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Lista.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pila.h" />
+    <ClCompile Include="Cola.h" />
+    <ClCompile Include="ListaCircular.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="enums.h" />
+    <ClInclude Include="Nodo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
