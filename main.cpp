@@ -306,23 +306,39 @@ struct ListaCircular
 	void eliminar(int info) {
 		Nodo * anterior = NULL;
 		Nodo * aux = cab;
+		bool encontrado = false;
+		bool continuar = true;
 
 		if (cab == NULL)
 			printf("\nNingun nodo existente en la Lista\n");
 		else
 		{
-			while ((aux != NULL) && (aux->info != info)) {
+			if ((cab == fin) && (aux->info == info))
+			{
+				cab = NULL;
+				fin = NULL;
+				this->aux = NULL;
+				delete aux;
+				return;
+			}
+
+			while ( continuar && aux->info != info) {
 				anterior = aux;
 				aux = aux->sig;
+				if (aux == fin) 
+					continuar = false;
 			}
-			if (aux != NULL) {
+
+			if (aux->info == info)
+			{
 				if (aux == cab) {
 					cab = aux->sig;
+					fin->sig = cab;
 					this->aux = cab;
 				}
-				else if (aux->sig == NULL) {
+				else if (aux->sig == cab) {
 					fin = anterior;
-					anterior->sig = NULL;
+					anterior->sig = cab;
 				}
 				else
 					anterior->sig = aux->sig;
